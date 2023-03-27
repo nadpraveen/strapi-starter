@@ -5,6 +5,7 @@ import Layout from "../../components/layout"
 import NextImage from "../../components/image"
 import Seo from "../../components/seo"
 import { getStrapiMedia } from "../../lib/media"
+import Link from "next/link"
 
 const Article = ({ article, categories }) => {
   const imageUrl = getStrapiMedia(article.attributes.image)
@@ -43,11 +44,19 @@ const Article = ({ article, categories }) => {
             </div>
             <div className="uk-width-expand">
               <p className="uk-margin-remove-bottom">
-                By {article.attributes.author.name}
+                By {article.attributes.author.data.attributes.name}
+                in &nbsp;
+                <Link
+                  href={`/category/${article.attributes.category.data.attributes.slug}`}
+                >
+                  <a className="uk-link-reset">
+                    {article.attributes.category.data.attributes.name}
+                  </a>
+                </Link>
               </p>
               <p className="uk-text-meta uk-margin-remove-top">
                 <Moment format="MMM Do YYYY">
-                  {article.attributes.published_at}
+                  {article.attributes.author.data.attributes.published_at}
                 </Moment>
               </p>
             </div>
