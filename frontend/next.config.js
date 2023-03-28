@@ -4,7 +4,7 @@
 const nextConfig = {
   images: {
     loader: "default",
-    domains: ["api.staging.finezzy.com"],
+    domains: ["localhost"],
   },
 }
 
